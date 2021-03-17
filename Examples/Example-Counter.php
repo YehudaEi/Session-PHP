@@ -1,6 +1,6 @@
 <?php
 
-include('SessionClass.php');
+require_once('../lib/SessionClass.php');
 
 SESSION::setSessionName("MyTest");
 SESSION::init();

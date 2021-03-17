@@ -74,16 +74,7 @@ class SESSION{
         return self::$sessionFile;
     }
     
-    /*
-    public static function __set($index, $value){
-        self::$session[$index] = $value;
-        self::saveSession();
-    }
-    public static function __get($index){
-        return self::$session[$index];
-    }
-    */
-    
+    // Not used because $session is public...
     public static function set($session){
         self::$session = $session;
         self::saveSession();

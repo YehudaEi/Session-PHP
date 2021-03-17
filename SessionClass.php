@@ -1,7 +1,7 @@
 <?php
 
 class SESSION{
-    public static $session = array();
+    public static $s = array();
     private static $sessionName = "YE_SESSION";
     private static $sessionFile = __DIR__ . "/session.json";
     private static $sessionExp = 3600;
@@ -27,7 +27,7 @@ class SESSION{
         if(!is_array($data)) $data = array();
         
         if(isset($data[self::$sessionUUID]) && $data[self::$sessionUUID]['time'] > time()){
-            self::$session = $data[self::$sessionUUID]['data'];
+            self::$s = $data[self::$sessionUUID]['data'];
         }
         else{
             unset($data[self::$sessionUUID]);
@@ -39,13 +39,13 @@ class SESSION{
         $oldSessionData = json_decode(file_get_contents(self::$sessionFile), true);
         if(!is_array($oldSessionData)) $oldSessionData = array();
         
-        $oldSessionData[self::$sessionUUID]['data'] = self::$session;
+        $oldSessionData[self::$sessionUUID]['data'] = self::$s;
         $oldSessionData[self::$sessionUUID]['time'] = (time() + self::$sessionExp);
         
         $newSessionData = array();
-        foreach ($oldSessionData as $_SESSION_KEY => $_SESSION_DATA){
-            if($_SESSION_DATA['time'] > time())
-                $newSessionData[$_SESSION_KEY] = $_SESSION_DATA;
+        foreach ($oldSessionData as $key => $data){
+            if($data['time'] > time())
+                $newSessionData[$key] = $data;
         }
         file_put_contents(self::$sessionFile, json_encode($newSessionData, true));
     }
@@ -74,13 +74,13 @@ class SESSION{
         return self::$sessionFile;
     }
     
-    // Not used because $session is public...
-    public static function set($session){
-        self::$session = $session;
+    // Not used because $s is public...
+    public static function set($s){
+        self::$s = $s;
         self::saveSession();
     }
     public static function get(){
-        return self::$session;
+        return self::$s;
     }
 }
 

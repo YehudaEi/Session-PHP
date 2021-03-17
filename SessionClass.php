@@ -64,13 +64,13 @@ class SESSION{
     public static function setSessionExp($sessionExp){
         self::$sessionExp = $sessionExp;
     }
-    public static function setSessionExp(){
+    public static function getSessionExp(){
         return self::$sessionExp;
     }
     public static function setSessionFile($sessionFile){
         self::$sessionFile = $sessionFile;
     }
-    public static function setSessionExp(){
+    public static function getSessionFile(){
         return self::$sessionFile;
     }
     

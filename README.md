@@ -1,11 +1,11 @@
 # Session-PHP
-Self-implementation of a PHP session
+Alternative-Implementation of a PHP session
 
 The project was created out of a need for a PHP session mechanism, without the use of the built-in mechanism (because another part of the code used the built-in mechanism).
 
 For this purpose, I have written a relatively simple library for the implementation of the mechanism.
 
-Nice coding :)
+Happy coding :)
 
 ## Security Warning!
 It is mandatory to check that the session.json file is stored in a place that is not accessible to anyone !!!
